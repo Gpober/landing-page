@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I AM CFO - Real-Time Financial Dashboards for $2M-$25M Businesses</title>
+    <meta name="description" content="Get real-time cash flow visibility with I AM CFO. Connect QuickBooks and see live dashboards with AI-powered analysis. Built for businesses doing $2M-$25M in revenue.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1FB5E8;
+            --color-primary-hover: #1A9FD0;
+            --color-accent-dark: #0D8ABF;
+            --color-bg-light: #F4F6F8;
+            --color-text: #5C5C5C;
+            --color-white: #FFFFFF;
+            --color-success: #29B77A;
+            --color-alert: #E74C3C;
+            --color-accent-bright: #00A8E8;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: var(--color-white);
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #808080 0%, #1FB5E8 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, transparent 40%, #1FB5E8 40%, #1FB5E8 60%, transparent 60%);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1FB5E8 0%, #0D8ABF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* If using actual logo image, use this instead */
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .header-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(86, 182, 233, 0.3);
+        }
+
+        .header-cta:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(58, 155, 209, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--color-white);
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: var(--color-text);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(86, 182, 233, 0.3);
+        }
+
+        .cta-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(58, 155, 209, 0.4);
+        }
+
+        .hero-video {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            position: relative;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: var(--color-bg-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-proof p {
+            font-size: 14px;
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .logo-strip {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        /* Pain Section */
+        .pain-section {
+            background: var(--color-white);
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--color-text);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pain-card {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .pain-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+        }
+
+        .pain-card h3 {
+            font-size: 20px;
+            color: var(--color-accent-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .pain-card p {
+            font-size: 16px;
+            color: var(--color-text);
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: var(--color-bg-light);
+            padding: 80px 0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .solution-card {
+            background: var(--color-white);
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(86, 182, 233, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .solution-card h3 {
+            font-size: 22px;
+            color: var(--color-accent-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .solution-card p {
+            font-size: 16px;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--color-white);
+            padding: 80px 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            color: var(--color-accent-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        /* Pricing */
+        .pricing-section {
+            background: var(--color-bg-light);
+            padding: 80px 0;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            background: var(--color-white);
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--color-primary);
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(86, 182, 233, 0.2);
+        }
+
+        .plan-name {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            margin-bottom: 8px;
+        }
+
+        .price span {
+            font-size: 18px;
+            color: var(--color-text);
+            font-weight: 400;
+        }
+
+        .price-description {
+            font-size: 14px;
+            color: var(--color-text);
+            margin-bottom: 24px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--color-text);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--color-success);
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        /* Testimonial */
+        .testimonial-section {
+            background: var(--color-white);
+            padding: 80px 0;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-light);
+            padding: 48px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 48px auto 0;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 22px;
+            color: var(--color-accent-dark);
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-accent-dark);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        .stars {
+            color: var(--color-success);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-primary-hover) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .final-cta h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .cta-success {
+            background: var(--color-success);
+            color: var(--color-white);
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cta-success:hover {
+            background: #228B5F;
+            transform: translateY(-2px);
+        }
+
+        .guarantee {
+            margin-top: 24px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-accent-dark);
+            color: var(--color-white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--color-white);
+            text-decoration: none;
+            margin: 0 16px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            color: var(--color-primary);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .pain-grid,
+            .solution-grid,
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .final-cta h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-cta {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .hero-text p {
+                font-size: 18px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .final-cta {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="lib/logo.png" alt="I AM CFO" style="height: 48px; width: auto;">
+                </div>
+                <a href="#book-demo" class="header-cta">Book Demo</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>You've Built a $2M+ Business. It's Time to Operate Like a CFO.</h1>
+                    <p>I AM CFO syncs with QuickBooks to give you live cash flow visibility, AI-powered analysis, and automated reporting — no spreadsheets, no waiting.</p>
+                    <p style="background: var(--color-success); color: white; padding: 12px 20px; border-radius: 6px; display: inline-block; font-weight: 600; margin-bottom: 20px;">🎉 2025 Special: $299 Setup Fee WAIVED All Year</p>
+                    <a href="#book-demo" class="cta-primary">Book Free Cash Flow Demo</a>
+                </div>
+                <div class="hero-video">
+                    <div class="video-placeholder">
+                        📹 Your 2-Minute Demo Video Here<br>
+                        (Embed YouTube, Vimeo, or Loom)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <p>Trusted by 100+ businesses doing $2M-$25M in revenue</p>
+            <div class="logo-strip">
+                <div style="padding: 20px 40px; background: #e0e0e0; border-radius: 8px;">Client Logo 1</div>
+                <div style="padding: 20px 40px; background: #e0e0e0; border-radius: 8px;">Client Logo 2</div>
+                <div style="padding: 20px 40px; background: #e0e0e0; border-radius: 8px;">Client Logo 3</div>
+                <div style="padding: 20px 40px; background: #e0e0e0; border-radius: 8px;">Client Logo 4</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>You're Flying Blind With Your Cash Flow</h2>
+                <p>Running a successful business shouldn't mean waiting weeks for financial clarity.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">📊</div>
+                    <h3>Manual Reporting</h3>
+                    <p>Your team spends 10+ hours monthly pulling data from QuickBooks into Excel. Time you can't bill for.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">⏰</div>
+                    <h3>Delayed Insights</h3>
+                    <p>By the time you see last month's numbers, it's too late to make proactive decisions about cash flow.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">❌</div>
+                    <h3>Disconnected Systems</h3>
+                    <p>Your data lives in multiple places: bank accounts, POS, QuickBooks. No single source of truth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Comparison Section -->
+    <section class="comparison-section" style="background: var(--color-white); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>This Is What QuickBooks Shows You</h2>
+                <p>High-level summaries with no actionable detail</p>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto 60px; background: var(--color-bg-light); padding: 40px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                <div style="background: white; padding: 32px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8;">
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 24px; font-size: 16px; color: var(--color-accent-dark);">Statement of Cash Flows</div>
+                    <div style="text-align: center; margin-bottom: 32px; color: var(--color-text);">May 1-31, 2025</div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">OPERATING ACTIVITIES</div>
+                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Net Income</span><span>-3,380.87</span></div>
+                        <div style="margin: 12px 0; padding-left: 16px;">
+                            <div style="font-style: italic; margin-bottom: 8px;">Adjustments to reconcile Net Income to Net Cash:</div>
+                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>1020 Accounts Receivable (A/R)</span><span>33,888.75</span></div>
+                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>2010 Accounts Payable (A/P)</span><span>-58,282.24</span></div>
+                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>2051 Loan Payable - Owner</span><span>0.00</span></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #ddd; margin-top: 8px; font-weight: bold;"><span>Net cash provided by operating activities</span><span style="color: var(--color-alert);">-$27,774.36</span></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">INVESTING ACTIVITIES</div>
+                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Machinery & Equipment</span><span>-520.00</span></div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #ddd; margin-top: 8px; font-weight: bold;"><span>Net cash provided by investing activities</span><span>-$520.00</span></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">FINANCING ACTIVITIES</div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-weight: bold;"><span>NET CASH INCREASE FOR PERIOD</span><span style="color: var(--color-alert);">-$28,294.36</span></div>
+                    </div>
+                    
+                    <div style="border-top: 2px solid var(--color-accent-dark); padding-top: 16px; margin-top: 16px;">
+                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Cash at beginning of period</span><span>$91,100.54</span></div>
+                        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-weight: bold; font-size: 15px;"><span>CASH AT END OF PERIOD</span><span>$62,806.18</span></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 24px; text-align: center;">
+                    <p style="color: var(--color-alert); font-weight: 600; font-size: 18px;">❌ You can see cash decreased by $28K... but WHY?</p>
+                    <p style="color: var(--color-text); margin-top: 12px;">Where did the money actually go? Which expenses can you control? What decisions should you make?</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <div style="display: inline-block; background: var(--color-primary); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-size: 18px;">
+                    ⬇️ This Is What I AM CFO Shows You ⬇️
+                </div>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-dark) 100%); padding: 6px; border-radius: 12px;">
+                <div style="background: white; padding: 40px; border-radius: 10px;">
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 24px; font-size: 18px; color: var(--color-primary);">I AM CFO Enhanced Cash Flow Statement</div>
+                    <div style="text-align: center; margin-bottom: 32px; color: var(--color-text); font-weight: 600;">May 2025 - Every Dollar Accounted For</div>
+                    
+                    <div style="background: var(--color-bg-light); padding: 24px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 16px; font-size: 16px;">OPERATING ACTIVITIES - DETAIL</div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; font-size: 14px;">
+                            <div style="display: contents; font-weight: 600; border-bottom: 2px solid var(--color-accent-dark); padding-bottom: 8px;">
+                                <div style="padding: 8px 0; border-bottom: 2px solid var(--color-accent-dark);">Account</div>
+                                <div style="padding: 8px 0; text-align: right; border-bottom: 2px solid var(--color-accent-dark);">Amount</div>
+                            </div>
+                            <div style="padding: 4px 0; color: var(--color-success); font-weight: 600;">Accounts Receivable (Collections)</div><div style="text-align: right; padding: 4px 0; color: var(--color-success); font-weight: 600;">$369,343.37</div>
+                            <div style="padding: 4px 0; color: var(--color-alert); font-weight: 600;">Accounts Payable (Vendor Payments)</div><div style="text-align: right; padding: 4px 0; color: var(--color-alert); font-weight: 600;">($376,611.92)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Car & Truck</div><div style="text-align: right; padding: 4px 0;">($1,075.71)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Contractors & Payroll</div><div style="text-align: right; padding: 4px 0;">$4,698.50</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Insurance</div><div style="text-align: right; padding: 4px 0;">($2,081.60)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Office Supplies & Software</div><div style="text-align: right; padding: 4px 0;">($4,578.40)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Travel Expenses</div><div style="text-align: right; padding: 4px 0;">($4,578.78)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Meals & Entertainment</div><div style="text-align: right; padding: 4px 0;">($449.53)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Rent & Lease</div><div style="text-align: right; padding: 4px 0;">($654.51)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Job Supplies / Tools</div><div style="text-align: right; padding: 4px 0;">($2,105.31)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Utilities</div><div style="text-align: right; padding: 4px 0;">($527.58)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Bank Charges & Fees</div><div style="text-align: right; padding: 4px 0;">($640.42)</div>
+                            <div style="padding: 4px 0; padding-left: 16px;">Shipping & Delivery</div><div style="text-align: right; padding: 4px 0;">($107.10)</div>
+                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Travel: Airbnb</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($238.98)</div>
+                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Travel: Hotel</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($551.30)</div>
+                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Meals: Food Travel</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($975.41)</div>
+                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Office: Company Phone</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($1,849.02)</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--color-accent-dark); font-weight: bold; font-size: 15px;">
+                            <div>Net Cash from Operations</div>
+                            <div style="text-align: right; color: var(--color-alert);">($27,774.36)</div>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--color-bg-light); padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">INVESTING ACTIVITIES</div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; font-size: 14px;">
+                            <div>Machinery & Equipment</div><div style="text-align: right;">($520.00)</div>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--color-primary); color: white; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">NET CASH CHANGE</div>
+                        <div style="font-size: 28px; font-weight: bold;">-$28,294.36</div>
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Starting Cash:</span><span>$91,100.54</span></div>
+                            <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold;"><span>Ending Cash:</span><span>$62,806.18</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 48px auto 0; text-align: center;">
+                <div style="background: var(--color-success); color: white; padding: 32px; border-radius: 12px;">
+                    <h3 style="font-size: 24px; margin-bottom: 16px;">✅ Now You Can Actually Make Decisions</h3>
+                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "We spent $4,578 on travel last month — is that normal?"</p>
+                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "Office supplies hit $4,578 — what did we buy?"</p>
+                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "We collected $369K but paid out $376K — can we negotiate terms?"</p>
+                    <p style="font-size: 18px; font-weight: 600; margin-top: 24px;">This is what operating like a CFO actually looks like.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="#book-demo" class="cta-primary" style="font-size: 20px; padding: 20px 48px;">See Your Numbers Like This</a>
+                <p style="margin-top: 16px; color: var(--color-text);">Book a 15-minute demo and we'll show you your actual QuickBooks data with this level of detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>See Your Numbers Live. Make Better Decisions Daily.</h2>
+                <p>I AM CFO connects your QuickBooks and gives you instant financial clarity.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Real-Time Sync</h3>
+                    <p>Connect QuickBooks once and your dashboard updates automatically. See cash flow, profit, and A/R live.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🤖</div>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Get instant insights on trends, anomalies, and opportunities. Know what's working and what needs attention.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📈</div>
+                    <h3>Automated Reports</h3>
+                    <p>Stop building reports manually. Get executive-level dashboards that update 24/7 without touching a spreadsheet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>From Signup to Clarity in 24 Hours</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Book Demo</h3>
+                    <p>15-minute call to see your numbers live</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Connect QuickBooks</h3>
+                    <p>Secure one-click integration (takes 2 minutes)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Dashboard Setup</h3>
+                    <p>We configure everything for your business</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Start Using</h3>
+                    <p>Log in anytime, anywhere to see live data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>No long-term contracts. Cancel anytime. <strong style="color: var(--color-success);">$299 setup fee waived for all 2025 sign-ups.</strong></p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="plan-name">Essential</div>
+                    <div class="price">$399<span>/mo</span></div>
+                    <div class="price-description">QuickBooks sync only</div>
+                    <ul class="features-list">
+                        <li>Real-time QuickBooks sync</li>
+                        <li>Cash flow dashboard</li>
+                        <li>P&L and balance sheet</li>
+                        <li>Basic reporting</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="plan-name">Professional</div>
+                    <div class="price">$699<span>/mo</span></div>
+                    <div class="price-description">Most popular choice</div>
+                    <ul class="features-list">
+                        <li>Everything in Essential, plus:</li>
+                        <li>Operational platform sync (POS, PMS, etc.)</li>
+                        <li>AI-powered analysis & insights</li>
+                        <li>Multi-location tracking</li>
+                        <li>Custom reports</li>
+                        <li>Priority support</li>
+                        <li>Dedicated onboarding</li>
+                    </ul>
+                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-name">White Glove</div>
+                    <div class="price">$999<span>/mo</span></div>
+                    <div class="price-description">Fully customized buildout</div>
+                    <ul class="features-list">
+                        <li>Everything in Professional, plus:</li>
+                        <li>Custom dashboard design</li>
+                        <li>Bespoke integrations</li>
+                        <li>White-glove setup & training</li>
+                        <li>Monthly strategy call</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Business Owners Are Saying</h2>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"I AM CFO saved us 10+ hours every week on financial reporting. Now I can see our cash position in real-time across all our properties. It's like having a full-time CFO without the $150K salary."</p>
+                <p class="testimonial-author">Sarah Chen</p>
+                <p class="testimonial-role">CEO, Terra2 Properties | $4.2M Annual Revenue</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="book-demo">
+        <div class="container">
+            <h2>Ready to See Your Numbers Live?</h2>
+            <p>Book your free 15-minute demo and see your actual QuickBooks data in real-time.</p>
+            <a href="https://calendly.com/your-link" class="cta-success">Book Your Demo Now</a>
+            <p class="guarantee">✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <!-- Use same logo as header -->
+                <!-- <img src="/path-to-your-logo/iamcfo-logo.png" alt="I AM CFO" style="height: 40px;"> -->
+                <div class="logo-icon" style="width: 40px; height: 40px;"></div>
+                <div class="logo-text" style="font-size: 24px; color: white; background: none; -webkit-text-fill-color: white;">I AM CFO</div>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+                <a href="#support">Support</a>
+            </div>
+            <div class="copyright">
+                © 2025 I AM CFO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Scroll Behavior -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
