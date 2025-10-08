@@ -141,19 +141,6 @@
             justify-content: center;
         }
 
-        .video-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
         /* Social Proof */
         .social-proof {
             background: var(--color-bg-light);
@@ -176,6 +163,12 @@
             gap: 48px;
             flex-wrap: wrap;
             opacity: 0.6;
+        }
+
+        .logo-strip img:hover {
+            opacity: 1 !important;
+            filter: grayscale(0%) !important;
+            transform: scale(1.05);
         }
 
         /* Pain Section */
@@ -588,9 +581,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="lib/logo.png" alt="I AM CFO" style="height: 48px; width: auto;">
+                    <img src="/images/logo.png" alt="I AM CFO" style="height: 48px; width: auto;">
                 </div>
-                <a href="#book-demo" class="header-cta">Book Demo</a>
+                <a href="https://calendly.com/gpober/30min" target="_blank" class="header-cta">Book Demo</a>
             </div>
         </div>
     </header>
@@ -603,7 +596,7 @@
                     <h1>You've Built a $2M+ Business. It's Time to Operate Like a CFO.</h1>
                     <p>I AM CFO syncs with QuickBooks to give you live cash flow visibility, AI-powered analysis, and automated reporting — no spreadsheets, no waiting.</p>
                     <p style="background: var(--color-success); color: white; padding: 12px 20px; border-radius: 6px; display: inline-block; font-weight: 600; margin-bottom: 20px;">🎉 2025 Special: $299 Setup Fee WAIVED All Year</p>
-                    <a href="#book-demo" class="cta-primary">Book Free Cash Flow Demo</a>
+                    <a href="https://calendly.com/gpober/30min" target="_blank" class="cta-primary">Book Free Cash Flow Demo</a>
                 </div>
                 <div class="hero-video">
                     <iframe 
@@ -634,14 +627,6 @@
         </div>
     </section>
 
-    <style>
-        .logo-strip img:hover {
-            opacity: 1 !important;
-            filter: grayscale(0%) !important;
-            transform: scale(1.05);
-        }
-    </style>
-
     <!-- Pain Section -->
     <section class="pain-section">
         <div class="container">
@@ -665,131 +650,6 @@
                     <h3>Disconnected Systems</h3>
                     <p>Your data lives in multiple places: bank accounts, POS, QuickBooks. No single source of truth.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before/After Comparison Section -->
-    <section class="comparison-section" style="background: var(--color-white); padding: 80px 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>This Is What QuickBooks Shows You</h2>
-                <p>High-level summaries with no actionable detail</p>
-            </div>
-            
-            <div style="max-width: 900px; margin: 0 auto 60px; background: var(--color-bg-light); padding: 40px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
-                <div style="background: white; padding: 32px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8;">
-                    <div style="text-align: center; font-weight: bold; margin-bottom: 24px; font-size: 16px; color: var(--color-accent-dark);">Statement of Cash Flows</div>
-                    <div style="text-align: center; margin-bottom: 32px; color: var(--color-text);">May 1-31, 2025</div>
-                    
-                    <div style="margin-bottom: 24px;">
-                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">OPERATING ACTIVITIES</div>
-                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Net Income</span><span>-3,380.87</span></div>
-                        <div style="margin: 12px 0; padding-left: 16px;">
-                            <div style="font-style: italic; margin-bottom: 8px;">Adjustments to reconcile Net Income to Net Cash:</div>
-                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>1020 Accounts Receivable (A/R)</span><span>33,888.75</span></div>
-                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>2010 Accounts Payable (A/P)</span><span>-58,282.24</span></div>
-                            <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>2051 Loan Payable - Owner</span><span>0.00</span></div>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #ddd; margin-top: 8px; font-weight: bold;"><span>Net cash provided by operating activities</span><span style="color: var(--color-alert);">-$27,774.36</span></div>
-                    </div>
-                    
-                    <div style="margin-bottom: 24px;">
-                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">INVESTING ACTIVITIES</div>
-                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Machinery & Equipment</span><span>-520.00</span></div>
-                        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #ddd; margin-top: 8px; font-weight: bold;"><span>Net cash provided by investing activities</span><span>-$520.00</span></div>
-                    </div>
-                    
-                    <div style="margin-bottom: 24px;">
-                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">FINANCING ACTIVITIES</div>
-                        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-weight: bold;"><span>NET CASH INCREASE FOR PERIOD</span><span style="color: var(--color-alert);">-$28,294.36</span></div>
-                    </div>
-                    
-                    <div style="border-top: 2px solid var(--color-accent-dark); padding-top: 16px; margin-top: 16px;">
-                        <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>Cash at beginning of period</span><span>$91,100.54</span></div>
-                        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-weight: bold; font-size: 15px;"><span>CASH AT END OF PERIOD</span><span>$62,806.18</span></div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 24px; text-align: center;">
-                    <p style="color: var(--color-alert); font-weight: 600; font-size: 18px;">❌ You can see cash decreased by $28K... but WHY?</p>
-                    <p style="color: var(--color-text); margin-top: 12px;">Where did the money actually go? Which expenses can you control? What decisions should you make?</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin: 40px 0;">
-                <div style="display: inline-block; background: var(--color-primary); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-size: 18px;">
-                    ⬇️ This Is What I AM CFO Shows You ⬇️
-                </div>
-            </div>
-
-            <div style="max-width: 900px; margin: 0 auto; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-dark) 100%); padding: 6px; border-radius: 12px;">
-                <div style="background: white; padding: 40px; border-radius: 10px;">
-                    <div style="text-align: center; font-weight: bold; margin-bottom: 24px; font-size: 18px; color: var(--color-primary);">I AM CFO Enhanced Cash Flow Statement</div>
-                    <div style="text-align: center; margin-bottom: 32px; color: var(--color-text); font-weight: 600;">May 2025 - Every Dollar Accounted For</div>
-                    
-                    <div style="background: var(--color-bg-light); padding: 24px; border-radius: 8px; margin-bottom: 24px;">
-                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 16px; font-size: 16px;">OPERATING ACTIVITIES - DETAIL</div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; font-size: 14px;">
-                            <div style="display: contents; font-weight: 600; border-bottom: 2px solid var(--color-accent-dark); padding-bottom: 8px;">
-                                <div style="padding: 8px 0; border-bottom: 2px solid var(--color-accent-dark);">Account</div>
-                                <div style="padding: 8px 0; text-align: right; border-bottom: 2px solid var(--color-accent-dark);">Amount</div>
-                            </div>
-                            <div style="padding: 4px 0; color: var(--color-success); font-weight: 600;">Accounts Receivable (Collections)</div><div style="text-align: right; padding: 4px 0; color: var(--color-success); font-weight: 600;">$369,343.37</div>
-                            <div style="padding: 4px 0; color: var(--color-alert); font-weight: 600;">Accounts Payable (Vendor Payments)</div><div style="text-align: right; padding: 4px 0; color: var(--color-alert); font-weight: 600;">($376,611.92)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Car & Truck</div><div style="text-align: right; padding: 4px 0;">($1,075.71)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Contractors & Payroll</div><div style="text-align: right; padding: 4px 0;">$4,698.50</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Insurance</div><div style="text-align: right; padding: 4px 0;">($2,081.60)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Office Supplies & Software</div><div style="text-align: right; padding: 4px 0;">($4,578.40)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Travel Expenses</div><div style="text-align: right; padding: 4px 0;">($4,578.78)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Meals & Entertainment</div><div style="text-align: right; padding: 4px 0;">($449.53)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Rent & Lease</div><div style="text-align: right; padding: 4px 0;">($654.51)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Job Supplies / Tools</div><div style="text-align: right; padding: 4px 0;">($2,105.31)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Utilities</div><div style="text-align: right; padding: 4px 0;">($527.58)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Bank Charges & Fees</div><div style="text-align: right; padding: 4px 0;">($640.42)</div>
-                            <div style="padding: 4px 0; padding-left: 16px;">Shipping & Delivery</div><div style="text-align: right; padding: 4px 0;">($107.10)</div>
-                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Travel: Airbnb</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($238.98)</div>
-                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Travel: Hotel</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($551.30)</div>
-                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Meals: Food Travel</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($975.41)</div>
-                            <div style="padding: 4px 0; padding-left: 32px; font-style: italic; font-size: 13px;">→ Office: Company Phone</div><div style="text-align: right; padding: 4px 0; font-size: 13px;">($1,849.02)</div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--color-accent-dark); font-weight: bold; font-size: 15px;">
-                            <div>Net Cash from Operations</div>
-                            <div style="text-align: right; color: var(--color-alert);">($27,774.36)</div>
-                        </div>
-                    </div>
-
-                    <div style="background: var(--color-bg-light); padding: 16px; border-radius: 8px; margin-bottom: 16px;">
-                        <div style="font-weight: bold; color: var(--color-accent-dark); margin-bottom: 12px;">INVESTING ACTIVITIES</div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 8px; font-size: 14px;">
-                            <div>Machinery & Equipment</div><div style="text-align: right;">($520.00)</div>
-                        </div>
-                    </div>
-
-                    <div style="background: var(--color-primary); color: white; padding: 20px; border-radius: 8px; text-align: center;">
-                        <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">NET CASH CHANGE</div>
-                        <div style="font-size: 28px; font-weight: bold;">-$28,294.36</div>
-                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Starting Cash:</span><span>$91,100.54</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold;"><span>Ending Cash:</span><span>$62,806.18</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="max-width: 800px; margin: 48px auto 0; text-align: center;">
-                <div style="background: var(--color-success); color: white; padding: 32px; border-radius: 12px;">
-                    <h3 style="font-size: 24px; margin-bottom: 16px;">✅ Now You Can Actually Make Decisions</h3>
-                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "We spent $4,578 on travel last month — is that normal?"</p>
-                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "Office supplies hit $4,578 — what did we buy?"</p>
-                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 8px;">• "We collected $369K but paid out $376K — can we negotiate terms?"</p>
-                    <p style="font-size: 18px; font-weight: 600; margin-top: 24px;">This is what operating like a CFO actually looks like.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 48px;">
-                <a href="#book-demo" class="cta-primary" style="font-size: 20px; padding: 20px 48px;">See Your Numbers Like This</a>
-                <p style="margin-top: 16px; color: var(--color-text);">Book a 15-minute demo and we'll show you your actual QuickBooks data with this level of detail.</p>
             </div>
         </div>
     </section>
@@ -871,7 +731,7 @@
                         <li>Basic reporting</li>
                         <li>Email support</li>
                     </ul>
-                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/8x200j4P4d0hg4gdWPdnW06" target="_blank" class="cta-primary">Get Started</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="plan-name">Professional</div>
@@ -886,7 +746,7 @@
                         <li>Priority support</li>
                         <li>Dedicated onboarding</li>
                     </ul>
-                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/6oU6oH81gd0h2dq2e7dnW07" target="_blank" class="cta-primary">Get Started</a>
                 </div>
                 <div class="pricing-card">
                     <div class="plan-name">White Glove</div>
@@ -900,7 +760,7 @@
                         <li>Monthly strategy call</li>
                         <li>Dedicated account manager</li>
                     </ul>
-                    <a href="#book-demo" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/00wcN5chwf8p05i8CvdnW08" target="_blank" class="cta-primary">Get Started</a>
                 </div>
             </div>
         </div>
@@ -926,7 +786,7 @@
         <div class="container">
             <h2>Ready to See Your Numbers Live?</h2>
             <p>Book your free 15-minute demo and see your actual QuickBooks data in real-time.</p>
-            <a href="https://calendly.com/your-link" class="cta-success">Book Your Demo Now</a>
+            <a href="https://calendly.com/gpober/30min" target="_blank" class="cta-success">Book Your Demo Now</a>
             <p class="guarantee">✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)</p>
         </div>
     </section>
@@ -935,13 +795,13 @@
     <footer>
         <div class="container">
             <div class="logo" style="justify-content: center; margin-bottom: 20px;">
-                <img src="lib/logo.png" alt="I AM CFO" style="height: 40px; width: auto;">
+                <img src="/images/logo.png" alt="I AM CFO" style="height: 40px; width: auto;">
             </div>
             <div class="footer-links">
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
-                <a href="#contact">Contact</a>
-                <a href="#support">Support</a>
+                <a href="mailto:support@iamcfo.com">Contact</a>
+                <a href="mailto:support@iamcfo.com">Support</a>
             </div>
             <div class="copyright">
                 © 2025 I AM CFO. All rights reserved.
