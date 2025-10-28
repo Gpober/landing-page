@@ -1,13 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, Suspense } from 'react'
-import { supabase } from '@/lib/supabase'
-import { useTrackUTM, getStoredUTM, clearStoredUTM } from '@/hooks/useTrackUTM'
+import { useState } from 'react'
 
-function LandingPageContent() {
-  useTrackUTM()
-  
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
+export default function LandingPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,33 +22,7 @@ function LandingPageContent() {
     setSubmitting(true)
 
     try {
-      const utmData = getStoredUTM()
-      
-      const prospectData = {
-        email: formData.email,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        company: formData.company,
-        phone: formData.phone || null,
-        revenue_estimate: formData.revenue || null,
-        source: utmData?.source || 'website',
-        email_sent: false,
-        replied: false,
-        demo_booked: false,
-        became_client: false,
-        sequence_step: 0
-      }
-
-      await supabase.from('prospects').insert(prospectData)
-
-      if (utmData && utmData.utm_content !== 'unknown') {
-        await supabase.rpc('link_prospect_to_click', {
-          p_prospect_email: formData.email,
-          p_utm_content: utmData.utm_content
-        })
-      }
-
-      clearStoredUTM()
+      // For now, just redirect to Calendly
       window.location.href = 'https://calendly.com/gpober/30min'
     } catch (error) {
       console.error('Error:', error)
@@ -148,7 +121,8 @@ function LandingPageContent() {
               { icon: '🤷', title: 'No Real CFO Guidance', text: 'Your accountant files taxes. Your bookkeeper records transactions. Nobody is actually managing your money strategically.' }
             ].map((pain, i) => (
               <div key={i} className="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{pain.icon} {pain.title}</h3>
+                <div className="text-4xl mb-4">{pain.icon}</div>
+                <h3 className="text-2xl font-bold mb-3">{pain.title}</h3>
                 <p className="text-gray-700 text-lg">{pain.text}</p>
               </div>
             ))}
@@ -156,72 +130,12 @@ function LandingPageContent() {
         </div>
       </section>
 
-      {/* QB vs I AM CFO Comparison */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Solution */}
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">QuickBooks vs. I AM CFO</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-gray-200">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-700">Standard QuickBooks</h3>
-                <p className="text-gray-500">What you're probably using now</p>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { label: 'Operating Activities', value: '$45,230' },
-                  { label: 'Investing Activities', value: '-$12,500' },
-                  { label: 'Financing Activities', value: '$8,900' }
-                ].map((item, i) => (
-                  <div key={i} className="bg-gray-50 p-4 rounded border border-gray-200">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">{item.label}</span>
-                      <span className="text-gray-900 font-mono">{item.value}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
-                <p className="text-red-800 font-semibold">❌ The Problem:</p>
-                <p className="text-red-700 text-sm mt-2">These numbers tell you nothing actionable. Where's your A/R aging? Which expenses are killing you? You're flying blind.</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-2xl p-8 border-2 border-blue-500">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-blue-600">I AM CFO Dashboard</h3>
-                <p className="text-gray-600">Real-time, actionable insights</p>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { label: 'Collections (A/R)', value: '$125,450', trend: '↑ 12%', color: 'text-green-600', note: '$45K past 30 days - Follow up needed' },
-                  { label: 'Payments (A/P)', value: '$87,230', trend: '↓ 5%', color: 'text-red-600', note: '$22K due this week' },
-                  { label: 'Payroll', value: '$156,780', trend: '→ Stable', color: 'text-gray-600', note: 'Next payroll: $32K on Friday' }
-                ].map((item, i) => (
-                  <div key={i} className="bg-blue-50 p-4 rounded border border-blue-200">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="text-sm text-gray-600">{item.label}</p>
-                        <p className="text-2xl font-bold text-blue-600">{item.value}</p>
-                      </div>
-                      <span className={`${item.color} font-semibold`}>{item.trend}</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-1">{item.note}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-                <p className="text-green-800 font-semibold">✓ The Solution:</p>
-                <p className="text-green-700 text-sm mt-2">Every number is actionable. You know exactly what to do next. Make decisions in minutes, not weeks.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">What If You Could See Everything, In Real-Time, For $699/Month?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            Your Numbers. Live. On One Dashboard.
+          </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-6">One Dashboard. All Your Locations. Updated Live.</h3>
@@ -362,13 +276,5 @@ function LandingPageContent() {
         </div>
       </footer>
     </div>
-  )
-}
-
-export default function LandingPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><div className="text-xl">Loading...</div></div>}>
-      <LandingPageContent />
-    </Suspense>
   )
 }
