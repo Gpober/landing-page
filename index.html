@@ -148,12 +148,6 @@
             justify-content: center;
         }
 
-        .hero-video iframe {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-        }
-
         /* Social Proof */
         .social-proof {
             background: var(--color-bg-light);
@@ -176,13 +170,6 @@
             gap: 48px;
             flex-wrap: wrap;
             opacity: 0.6;
-        }
-
-        .logo-strip img {
-            height: 48px;
-            width: auto;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
         }
 
         .logo-strip img:hover {
@@ -212,34 +199,35 @@
         .section-header p {
             font-size: 18px;
             color: var(--color-text);
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
 
         .pain-card {
-            background: #FFF5F5;
-            border-left: 4px solid var(--color-alert);
+            text-align: center;
             padding: 32px;
-            border-radius: 8px;
+        }
+
+        .pain-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
 
         .pain-card h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--color-accent-dark);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .pain-card p {
             font-size: 16px;
             color: var(--color-text);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Solution Section */
@@ -250,22 +238,21 @@
 
         .solution-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
 
         .solution-card {
             background: var(--color-white);
-            padding: 40px;
+            padding: 32px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
             transition: all 0.3s ease;
         }
 
         .solution-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .solution-icon {
@@ -294,8 +281,8 @@
 
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
         }
 
         .step {
@@ -303,15 +290,15 @@
         }
 
         .step-number {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             background: var(--color-primary);
             color: var(--color-white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             margin: 0 auto 20px;
         }
@@ -324,7 +311,7 @@
         }
 
         .step p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--color-text);
         }
 
@@ -336,7 +323,7 @@
 
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
             max-width: 1100px;
             margin: 0 auto;
@@ -346,9 +333,13 @@
             background: var(--color-white);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
         }
 
         .pricing-card.featured {
@@ -357,21 +348,24 @@
         }
 
         .plan-name {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-accent-dark);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
         .price {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-accent-dark);
             margin-bottom: 8px;
         }
 
         .price span {
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: 400;
             color: var(--color-text);
         }
 
@@ -383,24 +377,18 @@
 
         .features-list {
             list-style: none;
-            text-align: left;
             margin-bottom: 32px;
         }
 
         .features-list li {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--color-text);
             padding: 8px 0;
-            position: relative;
-            padding-left: 28px;
+            border-bottom: 1px solid var(--color-bg-light);
         }
 
-        .features-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--color-success);
-            font-weight: 700;
+        .features-list li:last-child {
+            border-bottom: none;
         }
 
         /* Testimonial */
@@ -412,22 +400,22 @@
         .testimonial-card {
             max-width: 800px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #E0F7FF 0%, #F0E6FF 100%);
+            background: var(--color-bg-light);
             padding: 48px;
             border-radius: 12px;
             text-align: center;
         }
 
         .stars {
-            font-size: 32px;
-            color: #FFD700;
+            color: #FFB800;
+            font-size: 24px;
             margin-bottom: 24px;
         }
 
         .quote {
-            font-size: 22px;
-            color: var(--color-accent-dark);
-            line-height: 1.7;
+            font-size: 20px;
+            color: var(--color-text);
+            line-height: 1.6;
             margin-bottom: 24px;
             font-style: italic;
         }
@@ -440,59 +428,60 @@
         }
 
         .testimonial-role {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--color-text);
         }
 
         /* Final CTA */
         .final-cta {
-            background: linear-gradient(135deg, var(--color-success) 0%, #20A869 100%);
+            background: var(--color-primary);
             padding: 80px 0;
             text-align: center;
-            color: var(--color-white);
         }
 
         .final-cta h2 {
             font-size: 42px;
             font-weight: 700;
+            color: var(--color-white);
             margin-bottom: 16px;
         }
 
         .final-cta p {
-            font-size: 20px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
             margin-bottom: 32px;
-            opacity: 0.95;
         }
 
         .cta-success {
             display: inline-block;
-            background: var(--color-white);
-            color: var(--color-success);
+            background: var(--color-success);
+            color: var(--color-white);
             padding: 18px 48px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 18px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(41, 183, 122, 0.4);
         }
 
         .cta-success:hover {
+            background: #22A068;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(41, 183, 122, 0.5);
         }
 
         .guarantee {
-            margin-top: 24px;
             font-size: 14px;
-            opacity: 0.9;
+            color: rgba(255,255,255,0.8);
+            margin-top: 16px;
         }
 
         /* Footer */
         footer {
-            background: #1A1A1A;
-            color: #A0A0A0;
+            background: #2C3E50;
             padding: 40px 0;
+            color: rgba(255,255,255,0.7);
             text-align: center;
         }
 
@@ -500,28 +489,33 @@
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: #A0A0A0;
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--color-primary);
+            color: var(--color-white);
         }
 
         .copyright {
+            margin-top: 20px;
             font-size: 14px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero-content,
+            .pain-grid,
+            .solution-grid,
+            .steps-grid,
+            .pricing-cards {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
             .hero-text h1 {
@@ -535,6 +529,11 @@
             .pricing-card.featured {
                 transform: scale(1);
             }
+
+            .comparison-section > div > div:nth-child(2),
+            .comparison-section > div > div:nth-child(3) > div > div {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -544,24 +543,32 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="/lib/logo.png" alt="I AM CFO">
+                    <img src="/lib/logo.png" alt="I AM CFO" style="height: 48px; width: auto;">
                 </div>
-                <a href="https://calendly.com/gpober/30min" target="_blank" class="header-cta">Book Free Demo</a>
+                <a href="https://calendly.com/gpober/30min" target="_blank" class="header-cta">Book Demo</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>You've Built a $2M+ Business. It's Time to Operate Like a CFO.</h1>
                     <p>I AM CFO syncs with QuickBooks to give you live cash flow visibility, AI-powered analysis, and automated reporting — no spreadsheets, no waiting.</p>
-                    <a href="https://calendly.com/gpober/30min" target="_blank" class="cta-primary">Book Free Cash Flow Demo →</a>
+                    
+                    <!-- 2025 Special Banner -->
+                    <div style="background: linear-gradient(135deg, #29B77A 0%, #22A068 100%); padding: 16px 24px; border-radius: 8px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(41, 183, 122, 0.3);">
+                        <p style="color: white; font-size: 18px; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 8px;">
+                            🎉 2025 Special: $299 Setup Fee WAIVED All Year
+                        </p>
+                    </div>
+                    
+                    <a href="https://calendly.com/gpober/30min" target="_blank" class="cta-primary">Book Free Cash Flow Demo</a>
                 </div>
                 <div class="hero-video">
-                    <iframe src="https://www.youtube.com/embed/ZLEk7ybKMwk" title="I AM CFO Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZLEk7ybKMwk" title="I AM CFO Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 12px;"></iframe>
                 </div>
             </div>
         </div>
@@ -572,39 +579,240 @@
         <div class="container">
             <p>Trusted by 100+ businesses doing $2M-$25M in revenue</p>
             <div class="logo-strip">
-                <img src="/client 1.png" alt="Client Logo">
-                <img src="/client 2.png" alt="Client Logo">
-                <img src="/client 3.png" alt="Client Logo">
-                <img src="/client 4.png" alt="Client Logo">
-                <img src="/client 5.png" alt="Client Logo">
+                <img src="lib/client 1.png" alt="Client Logo" style="height: 50px; width: auto; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease;">
+                <img src="lib/client 2.png" alt="Client Logo" style="height: 50px; width: auto; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease;">
+                <img src="lib/client 3.png" alt="Client Logo" style="height: 50px; width: auto; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease;">
+                <img src="lib/client 4.png" alt="Client Logo" style="height: 50px; width: auto; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease;">
+                <img src="lib/client 5.png" alt="Client Logo" style="height: 50px; width: auto; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease;">
             </div>
         </div>
     </section>
 
-    <!-- Pain Points -->
+    <!-- Pain Section -->
     <section class="pain-section">
         <div class="container">
             <div class="section-header">
-                <h2>You're Making Money... But Have No Idea Where It's Going</h2>
+                <h2>You're Flying Blind With Your Cash Flow</h2>
+                <p>Running a successful business shouldn't mean waiting weeks for financial clarity.</p>
             </div>
             <div class="pain-grid">
                 <div class="pain-card">
-                    <h3>💸 Cash Flow Chaos</h3>
-                    <p>One location is printing money. Another is bleeding cash. You won't know until it's too late because your books are 45 days behind.</p>
+                    <div class="pain-icon">📊</div>
+                    <h3>Manual Reporting</h3>
+                    <p>Your team spends 10+ hours monthly pulling data from QuickBooks into Excel. Time you can't bill for.</p>
                 </div>
                 <div class="pain-card">
-                    <h3>📊 QuickBooks Lies</h3>
-                    <p>Your P&L says you're profitable. Your bank account says otherwise. Something's wrong but your bookkeeper can't explain it.</p>
+                    <div class="pain-icon">⏰</div>
+                    <h3>Delayed Insights</h3>
+                    <p>By the time you see last month's numbers, it's too late to make proactive decisions about cash flow.</p>
                 </div>
                 <div class="pain-card">
-                    <h3>🤷 No Real CFO Guidance</h3>
-                    <p>Your accountant files taxes. Your bookkeeper records transactions. Nobody is actually managing your money strategically.</p>
+                    <div class="pain-icon">❌</div>
+                    <h3>Disconnected Systems</h3>
+                    <p>Your data lives in multiple places: bank accounts, POS, QuickBooks. No single source of truth.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution -->
+    <!-- QuickBooks vs I AM CFO Comparison -->
+    <section class="comparison-section" style="background: linear-gradient(135deg, #F4F6F8 0%, #E8EDF2 100%); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="font-size: 42px; font-weight: 700; color: #0D8ABF; margin-bottom: 16px;">QuickBooks Shows Numbers. We Show You What They Mean.</h2>
+                <p style="font-size: 18px; color: #5C5C5C; max-width: 800px; margin: 0 auto;">Same data. Completely different insights. See the difference real-time intelligence makes.</p>
+            </div>
+
+            <!-- Side-by-Side Comparison -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px;">
+                
+                <!-- LEFT: Standard QuickBooks -->
+                <div style="background: white; border-radius: 12px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 2px solid #E0E0E0;">
+                    <!-- Header -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #F4F6F8;">
+                        <h3 style="font-size: 22px; font-weight: 700; color: #333; margin: 0;">Standard QuickBooks</h3>
+                        <div style="width: 32px; height: 32px; background: #FFEBEE; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #E74C3C; font-size: 18px; font-weight: 700;">✕</div>
+                    </div>
+
+                    <!-- QB Cash Flow Statement -->
+                    <div style="background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+                        <div style="font-size: 14px; font-weight: 600; color: #666; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #ddd;">STATEMENT OF CASH FLOWS</div>
+                        <div style="font-size: 12px; color: #999; margin-bottom: 20px;">May 2024</div>
+
+                        <!-- Cash Flow Items -->
+                        <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; color: #5C5C5C;">
+                            <span>Operating Activities</span>
+                            <span style="font-weight: 600;">$45,200</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; color: #5C5C5C;">
+                            <span>Investing Activities</span>
+                            <span style="font-weight: 600; color: #E74C3C;">-$12,500</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; color: #5C5C5C;">
+                            <span>Financing Activities</span>
+                            <span style="font-weight: 600; color: #E74C3C;">-$61,000</span>
+                        </div>
+
+                        <div style="border-top: 2px solid #333; margin: 16px 0; padding-top: 16px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; color: #333;">
+                                <span>Net Cash Change</span>
+                                <span style="color: #E74C3C;">-$28,294</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Problem Box -->
+                    <div style="background: #FFF4F4; border-left: 4px solid #E74C3C; padding: 20px; border-radius: 6px;">
+                        <div style="font-size: 16px; font-weight: 700; color: #E74C3C; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 20px;">✕</span> The Problem:
+                        </div>
+                        <p style="font-size: 14px; color: #5C5C5C; line-height: 1.6; margin: 0;">
+                            You can see cash decreased by $28K... but <strong>WHY?</strong> Where exactly did the money go? Which expenses are normal vs alarming?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: I AM CFO Dashboard -->
+                <div style="background: white; border-radius: 12px; padding: 32px; box-shadow: 0 8px 32px rgba(31, 181, 232, 0.3); border: 3px solid #1FB5E8;">
+                    <!-- Header -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #F4F6F8;">
+                        <h3 style="font-size: 22px; font-weight: 700; color: #1FB5E8; margin: 0;">I AM CFO Dashboard</h3>
+                        <div style="width: 32px; height: 32px; background: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #29B77A; font-size: 18px; font-weight: 700;">✓</div>
+                    </div>
+
+                    <!-- Enhanced Cash Flow -->
+                    <div style="background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); border: 2px solid #1FB5E8; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+                        <div style="font-size: 14px; font-weight: 600; color: #1FB5E8; margin-bottom: 12px;">ENHANCED CASH FLOW</div>
+                        <div style="font-size: 12px; color: #5C5C5C; margin-bottom: 20px;">May 2024 • <span style="color: #1FB5E8; cursor: pointer;">Click any line to drill down</span></div>
+
+                        <!-- Collections (A/R) -->
+                        <div style="display: flex; justify-content: space-between; padding: 12px; background: white; border-radius: 6px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 600; color: #29B77A; margin-bottom: 4px;">Collections (A/R)</div>
+                                <div style="font-size: 12px; color: #666;">Cox Automotive: $107K • Tesla Dealership: $89K</div>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 700; color: #29B77A;">+$369,052</div>
+                        </div>
+
+                        <!-- Payments (A/P) -->
+                        <div style="display: flex; justify-content: space-between; padding: 12px; background: white; border-radius: 6px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 600; color: #E74C3C; margin-bottom: 4px;">Payments (A/P)</div>
+                                <div style="font-size: 12px; color: #666;">Paid down vendors • Can we negotiate terms?</div>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 700; color: #E74C3C;">-$376,294</div>
+                        </div>
+
+                        <!-- Travel Expenses -->
+                        <div style="display: flex; justify-content: space-between; padding: 12px; background: white; border-radius: 6px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 600; color: #5C5C5C; margin-bottom: 4px;">Travel Expenses</div>
+                                <div style="font-size: 12px; color: #666;">Airbnb: $2,145 • Hotels: $1,890 • Flights: $543</div>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 700; color: #5C5C5C;">-$4,578</div>
+                        </div>
+
+                        <!-- Office Supplies -->
+                        <div style="display: flex; justify-content: space-between; padding: 12px; background: white; border-radius: 6px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 600; color: #5C5C5C; margin-bottom: 4px;">Office Supplies</div>
+                                <div style="font-size: 12px; color: #666;">What did we buy? Worth investigating.</div>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 700; color: #5C5C5C;">-$4,578</div>
+                        </div>
+
+                        <!-- Net Cash Change -->
+                        <div style="border-top: 2px solid #1FB5E8; padding-top: 16px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; color: #1FB5E8;">
+                                <span>Net Cash Change</span>
+                                <span style="color: #E74C3C;">-$28,294</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actionable Insights Box -->
+                    <div style="background: #F0FFF4; border-left: 4px solid #29B77A; padding: 20px; border-radius: 6px;">
+                        <div style="font-size: 16px; font-weight: 700; color: #29B77A; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 20px;">✓</span> Actionable Insights:
+                        </div>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                            <li style="font-size: 13px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 8px; line-height: 1.5;">
+                                • "We spent $4,578 on travel—is that normal?"
+                            </li>
+                            <li style="font-size: 13px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 8px; line-height: 1.5;">
+                                • "Office supplies hit $4,578—what did we buy?"
+                            </li>
+                            <li style="font-size: 13px; color: #5C5C5C; position: relative; padding-left: 8px; line-height: 1.5;">
+                                • "We collected $369K but paid out $376K—can we negotiate vendor terms?"
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Comparison Summary -->
+            <div style="margin-top: 48px; text-align: center;">
+                <div style="background: white; border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto;">
+                    <h3 style="font-size: 28px; font-weight: 700; color: #0D8ABF; margin-bottom: 24px;">Same Cash Flow Data. Completely Different Understanding.</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
+                        <!-- QuickBooks Column -->
+                        <div style="text-align: left;">
+                            <div style="font-size: 16px; font-weight: 600; color: #E74C3C; margin-bottom: 12px;">❌ QuickBooks Gives You:</div>
+                            <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #E74C3C;">✗</span>
+                                    Numbers without context
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #E74C3C;">✗</span>
+                                    Categories without details
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #E74C3C;">✗</span>
+                                    Data without insights
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #E74C3C;">✗</span>
+                                    Reports without actions
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- I AM CFO Column -->
+                        <div style="text-align: left;">
+                            <div style="font-size: 16px; font-weight: 600; color: #29B77A; margin-bottom: 12px;">✓ I AM CFO Gives You:</div>
+                            <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #29B77A; font-weight: 700;">✓</span>
+                                    <strong>Drill-down details</strong> (click any line)
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #29B77A; font-weight: 700;">✓</span>
+                                    <strong>Real vendor/customer names</strong>
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; margin-bottom: 8px; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #29B77A; font-weight: 700;">✓</span>
+                                    <strong>AI-powered insights</strong> (what's normal vs alarming)
+                                </li>
+                                <li style="font-size: 14px; color: #5C5C5C; position: relative; padding-left: 24px;">
+                                    <span style="position: absolute; left: 0; color: #29B77A; font-weight: 700;">✓</span>
+                                    <strong>Actionable questions</strong> you should ask
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <a href="https://calendly.com/gpober/30min" target="_blank" style="display: inline-block; background: #1FB5E8; color: white; padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(31, 181, 232, 0.4);">
+                        See Your Cash Flow This Way →
+                    </a>
+                    <p style="font-size: 14px; color: #5C5C5C; margin-top: 16px; margin-bottom: 0;">15-minute demo with your actual QuickBooks data • No credit card required</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
     <section class="solution-section">
         <div class="container">
             <div class="section-header">
@@ -681,7 +889,7 @@
                         <li>Basic reporting</li>
                         <li>Email support</li>
                     </ul>
-                    <a href="https://buy.stripe.com/8ww00j4P4d0hg4gdQR" target="_blank" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/8x200j4P4d0hg4gdWPdnW06" target="_blank" class="cta-primary">Get Started</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="plan-name">Professional</div>
@@ -696,7 +904,7 @@
                         <li>Priority support</li>
                         <li>Dedicated onboarding</li>
                     </ul>
-                    <a href="https://buy.stripe.com/6oU6oH81gd0h2dq28b" target="_blank" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/6oU6oH81gd0h2dq2e7dnW07" target="_blank" class="cta-primary">Get Started</a>
                 </div>
                 <div class="pricing-card">
                     <div class="plan-name">White Glove</div>
@@ -710,7 +918,7 @@
                         <li>Monthly strategy call</li>
                         <li>Dedicated account manager</li>
                     </ul>
-                    <a href="https://buy.stripe.com/00gcN5chwf8p05i14f" target="_blank" class="cta-primary">Get Started</a>
+                    <a href="https://buy.stripe.com/00wcN5chwf8p05i8CvdnW08" target="_blank" class="cta-primary">Get Started</a>
                 </div>
             </div>
         </div>
