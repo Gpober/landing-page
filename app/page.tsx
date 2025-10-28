@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useTrackUTM, getStoredUTM, clearStoredUTM } from '@/hooks/useTrackUTM'
 
-export default function LandingPage() {
+function LandingPageContent() {
   useTrackUTM()
   
   const [formData, setFormData] = useState({
@@ -140,7 +140,6 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">QuickBooks vs. I AM CFO</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* QuickBooks */}
             <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-gray-200">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-gray-700">Standard QuickBooks</h3>
@@ -166,7 +165,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* I AM CFO */}
             <div className="bg-white rounded-lg shadow-2xl p-8 border-2 border-blue-500">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-blue-600">I AM CFO Dashboard</h3>
@@ -337,5 +335,13 @@ export default function LandingPage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function LandingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><div className="text-xl">Loading...</div></div>}>
+      <LandingPageContent />
+    </Suspense>
   )
 }
