@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, Suspense } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useTrackUTM, getStoredUTM, clearStoredUTM } from '@/hooks/useTrackUTM'
@@ -64,7 +65,14 @@ function LandingPageContent() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg"></div>
+            <Image
+              src="/logo.png"
+              alt="I AM CFO logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+              priority
+            />
             <span className="text-2xl font-bold text-gray-900">I AM CFO</span>
           </div>
           <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
@@ -106,9 +114,22 @@ function LandingPageContent() {
           <p className="text-center text-gray-600 font-medium mb-8">
             Trusted by 100+ businesses doing $2M-$25M in revenue
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-12 w-32 bg-gray-300 rounded"></div>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {[
+              { src: '/client 1.png', alt: 'Client 1 logo' },
+              { src: '/client 2.png', alt: 'Client 2 logo' },
+              { src: '/client 3.png', alt: 'Client 3 logo' },
+              { src: '/client 4.png', alt: 'Client 4 logo' },
+              { src: '/client 5.png', alt: 'Client 5 logo' }
+            ].map((logo) => (
+              <Image
+                key={logo.src}
+                src={logo.src}
+                alt={logo.alt}
+                width={200}
+                height={50}
+                className="h-[50px] w-auto opacity-70 grayscale transition duration-200 hover:grayscale-0"
+              />
             ))}
           </div>
         </div>
@@ -319,7 +340,13 @@ function LandingPageContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg"></div>
+              <Image
+                src="/logo.png"
+                alt="I AM CFO logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
               <span className="text-2xl font-bold">I AM CFO</span>
             </div>
             <p className="text-gray-400 mb-6">Real-time financial intelligence for multi-location businesses.</p>
