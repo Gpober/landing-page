@@ -3,10 +3,6 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-/**
- * Hook to automatically track page views with UTM parameters
- * Use this on your landing page: info.iamcfo.com
- */
 export function useTrackUTM() {
   const searchParams = useSearchParams()
   
@@ -16,15 +12,12 @@ export function useTrackUTM() {
     const utmCampaign = searchParams.get('utm_campaign')
     const utmContent = searchParams.get('utm_content')
     
-    // Only track if we have UTM parameters
     if (utmSource || utmContent) {
-      // Store in sessionStorage so we can use it when they submit form
       sessionStorage.setItem('utm_source', utmSource || 'unknown')
       sessionStorage.setItem('utm_medium', utmMedium || 'organic')
       sessionStorage.setItem('utm_campaign', utmCampaign || 'unknown')
       sessionStorage.setItem('utm_content', utmContent || 'unknown')
       
-      // Track the click
       fetch('/api/track-click', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,40 +29,28 @@ export function useTrackUTM() {
           user_agent: navigator.userAgent,
           referrer: document.referrer
         })
-      }).catch(err => {
-        // Silently fail - don't break user experience
-        console.error('Failed to track click:', err)
-      })
+      }).catch(err => console.error('Failed to track click:', err))
     }
   }, [searchParams])
 }
 
-/**
- * Get stored UTM parameters (for use when creating prospect)
- */
 export function getStoredUTM() {
   if (typeof window === 'undefined') return null
   
   const utmSource = sessionStorage.getItem('utm_source')
-  const utmMedium = sessionStorage.getItem('utm_medium')
-  const utmCampaign = sessionStorage.getItem('utm_campaign')
   const utmContent = sessionStorage.getItem('utm_content')
   
   if (!utmSource && !utmContent) return null
   
   return {
     utm_source: utmSource || 'unknown',
-    utm_medium: utmMedium || 'organic',
-    utm_campaign: utmCampaign || 'unknown',
+    utm_medium: sessionStorage.getItem('utm_medium') || 'organic',
+    utm_campaign: sessionStorage.getItem('utm_campaign') || 'unknown',
     utm_content: utmContent || 'unknown',
-    // Generate source string: "linkedin_oct28_cashflow"
     source: utmContent ? `${utmSource}_${utmContent}` : utmSource || 'website'
   }
 }
 
-/**
- * Clear stored UTM parameters (call after prospect is created)
- */
 export function clearStoredUTM() {
   if (typeof window === 'undefined') return
   
