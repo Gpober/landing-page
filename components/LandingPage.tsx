@@ -1,13 +1,11 @@
-'use client'
-
 import Image from 'next/image'
-import { useState, Suspense } from 'react'
+import { FormEvent, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useTrackUTM, getStoredUTM, clearStoredUTM } from '@/hooks/useTrackUTM'
 
-function LandingPageContent() {
+export default function LandingPage() {
   useTrackUTM()
-  
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,13 +16,13 @@ function LandingPageContent() {
   })
   const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
 
     try {
       const utmData = getStoredUTM()
-      
+
       const prospectData = {
         email: formData.email,
         first_name: formData.firstName,
@@ -75,7 +73,12 @@ function LandingPageContent() {
             />
             <span className="text-2xl font-bold text-gray-900">I AM CFO</span>
           </div>
-          <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+          <a
+            href="https://calendly.com/gpober/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+          >
             Book Free Demo
           </a>
         </div>
@@ -97,12 +100,26 @@ function LandingPageContent() {
                   🎉 2025 Special: $299 Setup Fee WAIVED All Year
                 </p>
               </div>
-              <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+              <a
+                href="https://calendly.com/gpober/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
                 Book Free Cash Flow Demo →
               </a>
             </div>
             <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZLEk7ybKMwk" title="I AM CFO Demo" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen className="absolute inset-0"></iframe>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/ZLEk7ybKMwk"
+                title="I AM CFO Demo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -143,9 +160,21 @@ function LandingPageContent() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: '💸', title: 'Cash Flow Chaos', text: 'One location is printing money. Another is bleeding cash. You won\'t know until it\'s too late because your books are 45 days behind.' },
-              { icon: '📊', title: 'QuickBooks Lies', text: 'Your P&L says you\'re profitable. Your bank account says otherwise. Something\'s wrong but your bookkeeper can\'t explain it.' },
-              { icon: '🤷', title: 'No Real CFO Guidance', text: 'Your accountant files taxes. Your bookkeeper records transactions. Nobody is actually managing your money strategically.' }
+              {
+                icon: '💸',
+                title: 'Cash Flow Chaos',
+                text: "One location is printing money. Another is bleeding cash. You won't know until it's too late because your books are 45 days behind."
+              },
+              {
+                icon: '📊',
+                title: 'QuickBooks Lies',
+                text: "Your P&L says you're profitable. Your bank account says otherwise. Something's wrong but your bookkeeper can't explain it."
+              },
+              {
+                icon: '🤷',
+                title: 'No Real CFO Guidance',
+                text: 'Your accountant files taxes. Your bookkeeper records transactions. Nobody is actually managing your money strategically.'
+              }
             ].map((pain, i) => (
               <div key={i} className="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{pain.icon} {pain.title}</h3>
@@ -182,7 +211,9 @@ function LandingPageContent() {
               </div>
               <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
                 <p className="text-red-800 font-semibold">❌ The Problem:</p>
-                <p className="text-red-700 text-sm mt-2">These numbers tell you nothing actionable. Where's your A/R aging? Which expenses are killing you? You're flying blind.</p>
+                <p className="text-red-700 text-sm mt-2">
+                  These numbers tell you nothing actionable. Where's your A/R aging? Which expenses are killing you? You're flying blind.
+                </p>
               </div>
             </div>
 
@@ -193,9 +224,27 @@ function LandingPageContent() {
               </div>
               <div className="space-y-4">
                 {[
-                  { label: 'Collections (A/R)', value: '$125,450', trend: '↑ 12%', color: 'text-green-600', note: '$45K past 30 days - Follow up needed' },
-                  { label: 'Payments (A/P)', value: '$87,230', trend: '↓ 5%', color: 'text-red-600', note: '$22K due this week' },
-                  { label: 'Payroll', value: '$156,780', trend: '→ Stable', color: 'text-gray-600', note: 'Next payroll: $32K on Friday' }
+                  {
+                    label: 'Collections (A/R)',
+                    value: '$125,450',
+                    trend: '↑ 12%',
+                    color: 'text-green-600',
+                    note: '$45K past 30 days - Follow up needed'
+                  },
+                  {
+                    label: 'Payments (A/P)',
+                    value: '$87,230',
+                    trend: '↓ 5%',
+                    color: 'text-red-600',
+                    note: '$22K due this week'
+                  },
+                  {
+                    label: 'Payroll',
+                    value: '$156,780',
+                    trend: '→ Stable',
+                    color: 'text-gray-600',
+                    note: 'Next payroll: $32K on Friday'
+                  }
                 ].map((item, i) => (
                   <div key={i} className="bg-blue-50 p-4 rounded border border-blue-200">
                     <div className="flex justify-between items-center">
@@ -211,7 +260,9 @@ function LandingPageContent() {
               </div>
               <div className="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded">
                 <p className="text-green-800 font-semibold">✓ The Solution:</p>
-                <p className="text-green-700 text-sm mt-2">Every number is actionable. You know exactly what to do next. Make decisions in minutes, not weeks.</p>
+                <p className="text-green-700 text-sm mt-2">
+                  Every number is actionable. You know exactly what to do next. Make decisions in minutes, not weeks.
+                </p>
               </div>
             </div>
           </div>
@@ -221,12 +272,20 @@ function LandingPageContent() {
       {/* Pricing */}
       <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">What If You Could See Everything, In Real-Time, For $699/Month?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            What If You Could See Everything, In Real-Time, For $699/Month?
+          </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-6">One Dashboard. All Your Locations. Updated Live.</h3>
               <ul className="space-y-4 text-lg">
-                {['Real-time P&L by location (not 45 days old)', 'Cash flow that actually makes sense', 'A/R and A/P you can trust', 'Payroll tracking across all locations', 'KPIs that matter (not vanity metrics)'].map((item, i) => (
+                {[
+                  'Real-time P&L by location (not 45 days old)',
+                  'Cash flow that actually makes sense',
+                  "A/R and A/P you can trust",
+                  'Payroll tracking across all locations',
+                  'KPIs that matter (not vanity metrics)'
+                ].map((item, i) => (
                   <li key={i} className="flex items-start space-x-3">
                     <span className="text-2xl">✓</span>
                     <span>{item}</span>
@@ -241,14 +300,25 @@ function LandingPageContent() {
                 <div className="mt-2 text-sm text-green-600 font-semibold">$299 setup fee WAIVED for 2025! 🎉</div>
               </div>
               <ul className="space-y-3 mb-8">
-                {['Real-time financial dashboard', 'Multi-location tracking', 'Monthly CFO strategy calls', 'QuickBooks integration', 'Cancel anytime'].map((item, i) => (
+                {[
+                  'Real-time financial dashboard',
+                  'Multi-location tracking',
+                  'Monthly CFO strategy calls',
+                  'QuickBooks integration',
+                  'Cancel anytime'
+                ].map((item, i) => (
                   <li key={i} className="flex items-center space-x-2">
                     <span className="text-green-500 text-xl">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl">
+              <a
+                href="https://calendly.com/gpober/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-xl"
+              >
                 Get Started →
               </a>
             </div>
@@ -285,28 +355,61 @@ function LandingPageContent() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
-                  <input type="text" required value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                  <input
+                    type="text"
+                    required
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
-                  <input type="text" required value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                  <input
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Company *</label>
-                <input type="text" required value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                <input
+                  type="text"
+                  required
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
-                <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Annual Revenue</label>
-                <select value={formData.revenue} onChange={(e) => setFormData({ ...formData, revenue: e.target.value })} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <select
+                  value={formData.revenue}
+                  onChange={(e) => setFormData({ ...formData, revenue: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
                   <option value="">Select range</option>
                   <option value="$2M-$5M">$2M - $5M</option>
                   <option value="$5M-$10M">$5M - $10M</option>
@@ -314,10 +417,16 @@ function LandingPageContent() {
                   <option value="$25M+">$25M+</option>
                 </select>
               </div>
-              <button type="submit" disabled={submitting} className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:cursor-not-allowed shadow-lg hover:shadow-xl">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+              >
                 {submitting ? 'Submitting...' : 'Book Your Free Strategy Call →'}
               </button>
-              <p className="text-center text-sm text-gray-500">✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)</p>
+              <p className="text-center text-sm text-gray-500">
+                ✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)
+              </p>
             </form>
           </div>
         </div>
@@ -327,11 +436,20 @@ function LandingPageContent() {
       <section className="py-20 bg-gradient-to-br from-green-500 to-green-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to See Your Numbers Live?</h2>
-          <p className="text-xl mb-8 opacity-90">Book your free 15-minute demo and see your actual QuickBooks data in real-time.</p>
-          <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-green-600 hover:bg-gray-100 font-bold text-lg px-10 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+          <p className="text-xl mb-8 opacity-90">
+            Book your free 15-minute demo and see your actual QuickBooks data in real-time.
+          </p>
+          <a
+            href="https://calendly.com/gpober/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-white text-green-600 hover:bg-gray-100 font-bold text-lg px-10 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
             Book Your Demo Now →
           </a>
-          <p className="mt-6 text-sm opacity-80">✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)</p>
+          <p className="mt-6 text-sm opacity-80">
+            ✓ No credit card required  ✓ Cancel anytime  ✓ $299 setup fee WAIVED (2025 only)
+          </p>
         </div>
       </section>
 
@@ -352,9 +470,20 @@ function LandingPageContent() {
             <p className="text-gray-400 mb-6">Real-time financial intelligence for multi-location businesses.</p>
           </div>
           <div className="flex justify-center space-x-6 mb-6">
-            <a href="/privacy-policy.html" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms.html" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-            <a href="https://calendly.com/gpober/30min" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Book a Call</a>
+            <a href="/privacy-policy.html" className="text-gray-400 hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/terms.html" className="text-gray-400 hover:text-white transition-colors">
+              Terms of Service
+            </a>
+            <a
+              href="https://calendly.com/gpober/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Book a Call
+            </a>
           </div>
           <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
             <p>&copy; 2024 I AM CFO. All rights reserved.</p>
@@ -362,13 +491,5 @@ function LandingPageContent() {
         </div>
       </footer>
     </div>
-  )
-}
-
-export default function LandingPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><div className="text-xl">Loading...</div></div>}>
-      <LandingPageContent />
-    </Suspense>
   )
 }

@@ -1,23 +1,24 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
 
 export function useTrackUTM() {
-  const searchParams = useSearchParams()
-  
   useEffect(() => {
-    const utmSource = searchParams.get('utm_source')
-    const utmMedium = searchParams.get('utm_medium')
-    const utmCampaign = searchParams.get('utm_campaign')
-    const utmContent = searchParams.get('utm_content')
-    
+    if (typeof window === 'undefined') return
+
+    const params = new URLSearchParams(window.location.search)
+
+    const utmSource = params.get('utm_source')
+    const utmMedium = params.get('utm_medium')
+    const utmCampaign = params.get('utm_campaign')
+    const utmContent = params.get('utm_content')
+
     if (utmSource || utmContent) {
       sessionStorage.setItem('utm_source', utmSource || 'unknown')
       sessionStorage.setItem('utm_medium', utmMedium || 'organic')
       sessionStorage.setItem('utm_campaign', utmCampaign || 'unknown')
       sessionStorage.setItem('utm_content', utmContent || 'unknown')
-      
+
       fetch('/api/track-click', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,17 +32,17 @@ export function useTrackUTM() {
         })
       }).catch(err => console.error('Failed to track click:', err))
     }
-  }, [searchParams])
+  }, [])
 }
 
 export function getStoredUTM() {
   if (typeof window === 'undefined') return null
-  
+
   const utmSource = sessionStorage.getItem('utm_source')
   const utmContent = sessionStorage.getItem('utm_content')
-  
+
   if (!utmSource && !utmContent) return null
-  
+
   return {
     utm_source: utmSource || 'unknown',
     utm_medium: sessionStorage.getItem('utm_medium') || 'organic',
@@ -53,7 +54,7 @@ export function getStoredUTM() {
 
 export function clearStoredUTM() {
   if (typeof window === 'undefined') return
-  
+
   sessionStorage.removeItem('utm_source')
   sessionStorage.removeItem('utm_medium')
   sessionStorage.removeItem('utm_campaign')
